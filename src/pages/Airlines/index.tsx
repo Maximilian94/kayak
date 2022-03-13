@@ -8,13 +8,25 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { getAirlinesData } from '../../services/kayak-api';
+import AirlineCard from '../../components/AirlineCard';
+
+interface AirlineData {
+	name?: string;
+	logoURL: string;
+}
 
 function Airlines() {
 	const options = ['Oneworld', 'Sky Team', 'Star Alliance'];
-	const [airlinesData, setAirlinesData] = useState([]);
+	const [airlinesData, setAirlinesData] = useState<AirlineData[]>([]);
+
+	const updateAirlinesData = async () => {
+		const airlinesDataResponse = await getAirlinesData();
+		console.log(airlinesDataResponse);
+		setAirlinesData(airlinesDataResponse);
+	};
 
 	useEffect(() => {
-		getAirlinesData();
+		updateAirlinesData();
 	}, []);
 	return (
 		<div>
@@ -26,6 +38,11 @@ function Airlines() {
 						<FormControlLabel control={<Checkbox />} label={name} />
 					))}
 				</FormGroup>
+			</div>
+			<div style={{ display: 'flex', flexWrap: 'wrap' }}>
+				{airlinesData.map((airlineData) => (
+					<AirlineCard AirlineData={airlineData} />
+				))}
 			</div>
 			<div>Options</div>
 		</div>

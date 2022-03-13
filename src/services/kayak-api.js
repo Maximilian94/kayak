@@ -1,13 +1,17 @@
+import fetchJsonp from 'fetch-jsonp';
+
 export const getAirlinesData = async () => {
 	try {
-		const request = await fetch(
-			'kayak.com/h/mobileapis/directory/airlines/homework',
-			{ param: 'jsonp' }
+		const request = await fetchJsonp(
+			'https://www.kayak.com/h/mobileapis/directory/airlines/homework',
+			{
+				jsonpCallback: 'jsonp',
+			}
 		);
-		// console.log('request', request);
 		const response = await request.json();
-		console.log('response', response);
+		return response;
 	} catch (error) {
 		console.log('Erro', error);
+		return { error: error };
 	}
 };
