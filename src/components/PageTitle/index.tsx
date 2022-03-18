@@ -10,7 +10,7 @@ interface PageTitleProps {
 const PageTitle: React.FC<PageTitleProps> = ({ title }) => {
 	return (
 		<div>
-			<Typography style={{ fontSize: 44, fontWeight: 400, color: '#000000' }}>
+			<Typography style={{ fontSize: 44, fontWeight: 100, color: '#000000' }}>
 				{title}
 			</Typography>
 		</div>
