@@ -107,6 +107,7 @@ function Airlines() {
 								{aliance.name}
 							</Typography>
 						}
+						key={aliance.id}
 					/>
 				))}
 				<FormControl>
@@ -135,7 +136,7 @@ function Airlines() {
 				}}
 			>
 				{getCompaniesForThisPage().map((airlineData) => (
-					<AirlineCard AirlineData={airlineData} />
+					<AirlineCard AirlineData={airlineData} key={airlineData.name} />
 				))}
 			</div>
 
