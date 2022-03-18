@@ -1,3 +1,9 @@
+@font-face {
+	font-family: 'helveticaneue';
+	src: local('helveticaneue'),
+		url('./fonts/helveticaneue.ttf') format('truetype');
+}
+
 * {
 	font-family: 'HelveticaNeue', 'Helvetica Neue Light', 'Helvetica Neue',
 		Helvetica, Arial, 'Lucida Grande', sans-serif;
